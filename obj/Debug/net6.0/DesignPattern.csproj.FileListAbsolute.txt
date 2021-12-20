@@ -1,0 +1,17 @@
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.AssemblyInfoInputs.cache
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.AssemblyInfo.cs
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.csproj.CoreCompileInputs.cache
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.csproj.AssemblyReference.cache
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.exe
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.deps.json
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.runtimeconfig.json
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.dll
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\ref\DesignPattern.dll
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.pdb
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.dll
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\ref\DesignPattern.dll
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.pdb
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.genruntimeconfig.cache
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Work_2022\Learn\DesignPattern\obj\Debug\net6.0\DesignPattern.csproj.CopyComplete
