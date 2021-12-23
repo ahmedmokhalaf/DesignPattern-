@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Creational.Prototype.Employee
+﻿namespace DesignPattern.Creational.Prototype.Employee
 {
     class Address
     {
-        private float Longitude ;
-        private float Latitude ;
-        private string StreetName ;
-        private string City ;
-        private string Country ;
-        private int BuildingNumber ;
-        private int ZipCode ;
+        private float Longitude;
+        private float Latitude;
+        private string StreetName;
+        private string City;
+        private string Country;
+        private int BuildingNumber;
+        private int ZipCode;
 
         public Address(float longitude, float latitude, string streetName, string city, string country, int buildingNumber, int zipCode)
         {

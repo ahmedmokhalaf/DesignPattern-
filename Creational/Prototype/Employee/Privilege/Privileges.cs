@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Creational.Prototype.Employee.Privilege
+﻿namespace DesignPattern.Creational.Prototype.Employee.Privilege
 {
     class Privileges
     {
 
         private List<IPrivilegeType> EmployeePrivileges;
 
-       
+
         public Privileges(List<IPrivilegeType> employeePrivileges)
         {
-            EmployeePrivileges = employeePrivileges ;
+            EmployeePrivileges = employeePrivileges;
         }
 
         public List<IPrivilegeType> SetEmployeePrivileges(IPrivilegeType employeePrivileges)
@@ -23,7 +17,7 @@ namespace DesignPattern.Creational.Prototype.Employee.Privilege
             {
                 EmployeePrivileges.Add(employeePrivileges);
             }
-            return EmployeePrivileges ;
+            return EmployeePrivileges;
         }
 
         public List<IPrivilegeType> GetEmployeePrivileges() => EmployeePrivileges;

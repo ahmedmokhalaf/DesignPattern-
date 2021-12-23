@@ -1,9 +1,4 @@
 ﻿using DesignPattern.Creational.ComputerExample.Computer.MotherBoard.MainParts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern.Creational.ComputerExample.Computer.MotherBoard
 {
@@ -27,9 +22,9 @@ namespace DesignPattern.Creational.ComputerExample.Computer.MotherBoard
         }
         public CPU GetCPU() => Cpu;
         public RAM GetRAM() => Ram;
-        public GPU GetGPU() => Gpu ;
-        public MainParts.Sockets GetSockets() => sockets ;
-        public NetworkCard  GetNetworkCard() => networkCard ;
+        public GPU GetGPU() => Gpu;
+        public MainParts.Sockets GetSockets() => sockets;
+        public NetworkCard GetNetworkCard() => networkCard;
         public Disk GetDisk() => disk;
     }
 }

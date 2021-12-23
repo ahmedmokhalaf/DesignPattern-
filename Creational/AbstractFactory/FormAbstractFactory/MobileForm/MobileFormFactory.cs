@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Creational.AbstractFactory.FormAbstractFactory.MobileForm
+﻿namespace DesignPattern.Creational.AbstractFactory.FormAbstractFactory.MobileForm
 {
     internal class MobileFormFactory : IFormFactory
     {
@@ -15,7 +9,7 @@ namespace DesignPattern.Creational.AbstractFactory.FormAbstractFactory.MobileFor
 
         public AbstractTextArea CreateTextArea()
         {
-            return new MobileTextArea("Mobile Text Area" ,"Enter your message...");
+            return new MobileTextArea("Mobile Text Area", "Enter your message...");
         }
 
         public AbstractTextInput CreateTextInput()

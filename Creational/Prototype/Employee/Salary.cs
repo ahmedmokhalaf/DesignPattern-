@@ -15,11 +15,11 @@
 
         public float SetNetSalary(float salary) => NetSalary = salary;
         public float SetTax(float tax) => Tax = tax;
-        public float SetMedicalInsurance(float medicalInsurance) => MedicalInsurance = medicalInsurance; 
+        public float SetMedicalInsurance(float medicalInsurance) => MedicalInsurance = medicalInsurance;
 
-        public float GetNetSalary() => NetSalary ;
-        public float GetTax() => Tax ;
-        public float GetMedicalInsurance() => MedicalInsurance ;
+        public float GetNetSalary() => NetSalary;
+        public float GetTax() => Tax;
+        public float GetMedicalInsurance() => MedicalInsurance;
 
     }
 }

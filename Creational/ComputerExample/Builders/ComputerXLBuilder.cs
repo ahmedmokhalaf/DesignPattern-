@@ -3,11 +3,6 @@ using DesignPattern.Creational.ComputerExample.Computer.MotherBoard;
 using DesignPattern.Creational.ComputerExample.Computer.MotherBoard.MainParts;
 using DesignPattern.Creational.ComputerExample.Computer.MotherBoard.SocketsType;
 using DesignPattern.Creational.ComputerExample.Computer.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Monitor = DesignPattern.Creational.ComputerExample.Computer.Monitor;
 
 namespace DesignPattern.Creational.ComputerExample.Builders

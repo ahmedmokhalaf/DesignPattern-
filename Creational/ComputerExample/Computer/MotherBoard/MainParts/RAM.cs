@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Creational.ComputerExample.Computer.MotherBoard.MainParts
+﻿namespace DesignPattern.Creational.ComputerExample.Computer.MotherBoard.MainParts
 {
     class RAM
     {
@@ -15,6 +9,6 @@ namespace DesignPattern.Creational.ComputerExample.Computer.MotherBoard.MainPart
             Size = size;
         }
 
-        public int GetSize() => Size;  
+        public int GetSize() => Size;
     }
 }

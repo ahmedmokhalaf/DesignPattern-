@@ -8,6 +8,7 @@ using DesignPattern.Creational.FactoryMethod.DialogExample.Dialogs;
 using DesignPattern.Creational.Prototype.Employee;
 using DesignPattern.Creational.Prototype.Employee.Privilege;
 using DesignPattern.Creational.Prototype.Employee.Privilege.Types;
+using DesignPattern.Creational.Singleton;
 
 Console.WriteLine("==============================================================================");
 Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("\t\t\t\t *** Design Pattern   ***");
@@ -82,3 +83,12 @@ Console.WriteLine(MobClient.CreateForm());
 GUIClient DeskTopClient = new GUIClient(new DesktopFormFactory());
 Console.WriteLine(DeskTopClient.CreateForm());
 Console.WriteLine("==============================================================================");
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine("*** SingleTon Method  ***");
+Console.ResetColor();
+
+AppSettings Settings = AppSettings.GetInstance();
+string DBConfig = AppSettings.GetConfig("Database");
+Console.WriteLine(DBConfig);
+string CacheConfig = AppSettings.GetConfig("Cache");
+Console.WriteLine(CacheConfig);

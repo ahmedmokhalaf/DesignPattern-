@@ -1,0 +1,10 @@
+﻿String multi Lines
+             @$"\n ******************************************* \n 
+                Name : {profileData.getName()} \n 
+                Age : {profileData.GetAge()} \n 
+                Telephone Number : {profileData.GetTelephoneNumber()}\n
+                Mobile Number : {profileData.GetMobileNumber()}\n
+                \t MedicalInsurance: {EmpSalary.GetMedicalInsurance()} \n
+                Employee Privileges : \n
+                \t{privilegestring} \n
+                \n ******************************************* \n";

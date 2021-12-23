@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Creational.AbstractFactory
+﻿namespace DesignPattern.Creational.AbstractFactory
 {
     class GUIClient
     {
@@ -17,12 +11,12 @@ namespace DesignPattern.Creational.AbstractFactory
 
         public void SetFactory(IFormFactory factory)
         {
-            Factory = factory ;
+            Factory = factory;
         }
 
         public string CreateForm()
         {
-            var Window = this.Factory.CreateWindow();
+            AbstractWindow Window = this.Factory.CreateWindow();
             Window.SetComponents(this.Factory.CreateTextInput());
             Window.SetComponents(this.Factory.CreateTextArea());
             Window.SetComponents(this.Factory.CreateButton());
