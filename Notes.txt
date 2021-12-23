@@ -8,3 +8,5 @@
                 Employee Privileges : \n
                 \t{privilegestring} \n
                 \n ******************************************* \n";
+
+Class Abstract using override with functions and not important implementation vars on this abstract.
