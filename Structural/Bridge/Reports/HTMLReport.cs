@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPattern.Bridge.Reports
+namespace DesignPattern.Bridge.Structural.Reports
 {
-    internal class PlainTextReport : ReportBridge
+    internal class HTMLReport : ReportBridge
     {
         public string showGrade1Report()
         {
-            return "This is a grade 1 report\n";
+            return "<h1>This is a grade 1 report</h1>\n";
         }
 
         public string showGrade2Report()
         {
-            return "This is a grade 2 report\n";
+            return "<h1>This is a grade 2 report</h1>\n";
         }
 
         public string showGrade3Report()
         {
-            return "This is a grade 3 report\n";
+            return "<h1>This is a grade 3 report</h1>\n";
         }
     }
 }

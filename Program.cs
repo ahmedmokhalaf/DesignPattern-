@@ -1,5 +1,5 @@
-﻿using DesignPattern.Bridge.Grades;
-using DesignPattern.Bridge.Reports;
+﻿using DesignPattern.Bridge.Structural.Grades;
+using DesignPattern.Bridge.Structural.Reports;
 using DesignPattern.Creational.AbstractFactory;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.DesktopForm;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.MobileForm;
@@ -11,26 +11,27 @@ using DesignPattern.Creational.Prototype.Employee;
 using DesignPattern.Creational.Prototype.Employee.Privilege;
 using DesignPattern.Creational.Prototype.Employee.Privilege.Types;
 using DesignPattern.Creational.Singleton;
-using DesignPattern.Structural.Adapter.SMSAdapter;
 using DesignPattern.Structural.Adapter.SMSAdapter.Adapters;
 using DesignPattern.Structural.Adapter.SMSAdapter.Messages;
-
+using DesignPattern.Structural.Bridge.Reports;
+using DesignPattern.Structural.Facade.FileConverter;
 
 SelectDesignPattern();
 
 void SelectDesignPattern()
 {
     List<string> Patterns = new List<string>() {
-        "Creational Pattern >> Factory",
-        "Creational Pattern >> Builder",
-        "Creational Pattern >> ProtoType",
-        "Creational Pattern >> Abstract_Factory",
-        "Creational Pattern >> SingleTon",
-        "Structural Pattern >> Adapter",
-        "Structural Pattern >> Bridge"
+        "Creational      Factory.",
+        "~~~~~~~~~~      Builder.",
+        "~~~~~~~~~~      ProtoType.",
+        "~~~~~~~~~~      Abstract Factory.",
+        "~~~~~~~~~~      SingleTon.",
+        "Structural      Adapter.",
+        "~~~~~~~~~~      Bridge.",
+        "~~~~~~~~~~      Facade."
     };
     Console.WriteLine($"Select Correct Number:\n");
-    Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " : \t\t\t "+ c.ToString()));
+    Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  "+ c.ToString()));
     ConsoleKeyInfo NumberDesignPattern = Console.ReadKey();
     Int32 number;
     if (Char.IsNumber(NumberDesignPattern.KeyChar) || Int32.TryParse(NumberDesignPattern.KeyChar.ToString(), out number))
@@ -53,6 +54,7 @@ void DesignPatternSitwtch(int key)
         case 5  : SingleTonDesignPattern();       break;
         case 6  : AdapterDesignPattern();         break;
         case 7  : BridageDesignPattern();         break;
+        case 8  : FacadeDesignPattern();          break;
         default : SelectDesignPattern();          break;
     }
 }
@@ -183,7 +185,6 @@ void AdapterDesignPattern()
     Console.WriteLine(client.getDeliveryStatus());
     Console.WriteLine("==============================================================================");
 }
-
 void BridageDesignPattern()
 {
     Console.ForegroundColor = ConsoleColor.Red;
@@ -202,4 +203,14 @@ void BridageDesignPattern()
     Console.WriteLine(grade2.GetType().Name + "\t" + grade2.ShowReport());
 
     Console.WriteLine("==============================================================================");
+}
+void FacadeDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("\t\t\t\t ***        FACADE        ***");
+    Console.ResetColor();
+
+    FileConverterFacade fileConverter = new FileConverterFacade("Test.mp3");
+    fileConverter.DoConvert();
 }

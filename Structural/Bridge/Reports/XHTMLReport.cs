@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DesignPattern.Bridge.Structural.Reports;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPattern.Bridge.Reports
+namespace DesignPattern.Structural.Bridge.Reports
 {
     internal class XHTMLReport : ReportBridge
     {

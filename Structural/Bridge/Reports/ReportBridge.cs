@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPattern.Bridge.Reports
+namespace DesignPattern.Bridge.Structural.Reports
 {
     internal interface ReportBridge
     {

@@ -1,11 +1,11 @@
-﻿using DesignPattern.Bridge.Reports;
+﻿using DesignPattern.Bridge.Structural.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPattern.Bridge.Grades
+namespace DesignPattern.Bridge.Structural.Grades
 {
     internal class Grade3Report : GradeReport
     {
