@@ -1,4 +1,6 @@
-﻿using DesignPattern.Creational.AbstractFactory;
+﻿using DesignPattern.Bridge.Grades;
+using DesignPattern.Bridge.Reports;
+using DesignPattern.Creational.AbstractFactory;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.DesktopForm;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.MobileForm;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.WebForm;
@@ -24,10 +26,11 @@ void SelectDesignPattern()
         "Creational Pattern >> ProtoType",
         "Creational Pattern >> Abstract_Factory",
         "Creational Pattern >> SingleTon",
-        "Structural Pattern >> Adapter"
+        "Structural Pattern >> Adapter",
+        "Structural Pattern >> Bridge"
     };
     Console.WriteLine($"Select Correct Number:\n");
-    Patterns.ForEach((c) => Console.WriteLine(Patterns.IndexOf(c) +" : \t\t\t "+ c.ToString()));
+    Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " : \t\t\t "+ c.ToString()));
     ConsoleKeyInfo NumberDesignPattern = Console.ReadKey();
     Int32 number;
     if (Char.IsNumber(NumberDesignPattern.KeyChar) || Int32.TryParse(NumberDesignPattern.KeyChar.ToString(), out number))
@@ -49,6 +52,7 @@ void DesignPatternSitwtch(int key)
         case 4  : AbstractFactoryDesignPattern(); break;
         case 5  : SingleTonDesignPattern();       break;
         case 6  : AdapterDesignPattern();         break;
+        case 7  : BridageDesignPattern();         break;
         default : SelectDesignPattern();          break;
     }
 }
@@ -159,7 +163,7 @@ void AdapterDesignPattern()
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
-    Console.WriteLine(" *** Adapter ***");
+    Console.WriteLine("\t\t\t\t ***         Adapter      ***");
     Console.ResetColor();
 
     SMSMessage SMSMessage1 = new SMSMessage("Test Message", "010001000100");
@@ -177,5 +181,25 @@ void AdapterDesignPattern()
     var x = client.filterNumbers();
     client.Send();
     Console.WriteLine(client.getDeliveryStatus());
+    Console.WriteLine("==============================================================================");
+}
+
+void BridageDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("\t\t\t\t ***        Brigade       ***");
+    Console.ResetColor();
+
+    Grade1Report grade = new Grade1Report(new HTMLReport());
+    Console.WriteLine(grade.GetType().Name +"\t" + grade.ShowReport());
+    grade.SetReport(new XHTMLReport());
+    Console.WriteLine(grade.GetType().Name + "\t" + grade.ShowReport());
+
+    Grade2Report grade2 = new Grade2Report(new PlainTextReport());
+    Console.WriteLine(grade2.GetType().Name + "\t" + grade2.ShowReport());
+    grade2.SetReport(new XHTMLReport());
+    Console.WriteLine(grade2.GetType().Name + "\t" + grade2.ShowReport());
+
     Console.WriteLine("==============================================================================");
 }
