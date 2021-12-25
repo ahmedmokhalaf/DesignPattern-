@@ -14,6 +14,8 @@ using DesignPattern.Creational.Singleton;
 using DesignPattern.Structural.Adapter.SMSAdapter.Adapters;
 using DesignPattern.Structural.Adapter.SMSAdapter.Messages;
 using DesignPattern.Structural.Bridge.Reports;
+using DesignPattern.Structural.Decorator;
+using DesignPattern.Structural.Decorator.Decorators;
 using DesignPattern.Structural.Facade.FileConverter;
 
 SelectDesignPattern();
@@ -28,10 +30,11 @@ void SelectDesignPattern()
         "~~~~~~~~~~      SingleTon.",
         "Structural      Adapter.",
         "~~~~~~~~~~      Bridge.",
-        "~~~~~~~~~~      Facade."
+        "~~~~~~~~~~      Facade.",
+        "~~~~~~~~~~      Decorator."
     };
     Console.WriteLine($"Select Correct Number:\n");
-    Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  "+ c.ToString()));
+    Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  " + c.ToString()));
     ConsoleKeyInfo NumberDesignPattern = Console.ReadKey();
     Int32 number;
     if (Char.IsNumber(NumberDesignPattern.KeyChar) || Int32.TryParse(NumberDesignPattern.KeyChar.ToString(), out number))
@@ -47,15 +50,16 @@ void DesignPatternSitwtch(int key)
 {
     switch (key)
     {
-        case 1  : FactoryDesignPattern();         break;
-        case 2  : BuilderDesignPattern();         break;
-        case 3  : ProtoTypeDesignPattern();       break;
-        case 4  : AbstractFactoryDesignPattern(); break;
-        case 5  : SingleTonDesignPattern();       break;
-        case 6  : AdapterDesignPattern();         break;
-        case 7  : BridageDesignPattern();         break;
-        case 8  : FacadeDesignPattern();          break;
-        default : SelectDesignPattern();          break;
+        case 1: FactoryDesignPattern(); break;
+        case 2: BuilderDesignPattern(); break;
+        case 3: ProtoTypeDesignPattern(); break;
+        case 4: AbstractFactoryDesignPattern(); break;
+        case 5: SingleTonDesignPattern(); break;
+        case 6: AdapterDesignPattern(); break;
+        case 7: BridageDesignPattern(); break;
+        case 8: FacadeDesignPattern(); break;
+        case 9: DecoratorDesignPattern(); break;
+        default: SelectDesignPattern(); break;
     }
 }
 
@@ -193,7 +197,7 @@ void BridageDesignPattern()
     Console.ResetColor();
 
     Grade1Report grade = new Grade1Report(new HTMLReport());
-    Console.WriteLine(grade.GetType().Name +"\t" + grade.ShowReport());
+    Console.WriteLine(grade.GetType().Name + "\t" + grade.ShowReport());
     grade.SetReport(new XHTMLReport());
     Console.WriteLine(grade.GetType().Name + "\t" + grade.ShowReport());
 
@@ -213,4 +217,28 @@ void FacadeDesignPattern()
 
     FileConverterFacade fileConverter = new FileConverterFacade("Test.mp3");
     fileConverter.DoConvert();
+
+    Console.WriteLine("==============================================================================");
+}
+void DecoratorDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("\t\t\t\t ***        Decorator        ***");
+    Console.ResetColor();
+
+    bool SmsNotifictionEnable = true;
+    bool WhatsappNotifictionEnable = true;
+    INotifier notifier = new EmailNotifier("aa@a.a");
+    if (SmsNotifictionEnable)
+    {
+        notifier  = new SMSNotifierDecorator(notifier, "01000000");
+    }
+    if (WhatsappNotifictionEnable)
+    {
+        notifier  = new WhatsAppNotifierDecorator(notifier, "011111111");
+    }
+    notifier.Notify();
+
+    Console.WriteLine("==============================================================================");
 }
