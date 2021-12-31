@@ -17,6 +17,8 @@ using DesignPattern.Structural.Bridge.Reports;
 using DesignPattern.Structural.Decorator;
 using DesignPattern.Structural.Decorator.Decorators;
 using DesignPattern.Structural.Facade.FileConverter;
+using DesignPattern.Structural.Proxy;
+using DesignPattern.Structural.Proxy.Clients;
 
 SelectDesignPattern();
 
@@ -31,15 +33,16 @@ void SelectDesignPattern()
         "Structural      Adapter.",
         "~~~~~~~~~~      Bridge.",
         "~~~~~~~~~~      Facade.",
-        "~~~~~~~~~~      Decorator."
+        "~~~~~~~~~~      Decorator.",
+        "~~~~~~~~~~      Proxy."
     };
     Console.WriteLine($"Select Correct Number:\n");
     Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  " + c.ToString()));
-    ConsoleKeyInfo NumberDesignPattern = Console.ReadKey();
+    var NumberDesignPattern = Console.ReadLine();
     Int32 number;
-    if (Char.IsNumber(NumberDesignPattern.KeyChar) || Int32.TryParse(NumberDesignPattern.KeyChar.ToString(), out number))
+    if (int.TryParse(NumberDesignPattern, out number))
     {
-        DesignPatternSitwtch(Int32.Parse(NumberDesignPattern.KeyChar.ToString()));
+        DesignPatternSitwtch(Int32.Parse(NumberDesignPattern.ToString()));
     }
     else
     {
@@ -59,6 +62,7 @@ void DesignPatternSitwtch(int key)
         case 7: BridageDesignPattern(); break;
         case 8: FacadeDesignPattern(); break;
         case 9: DecoratorDesignPattern(); break;
+        case 10: ProxyDesignPattern(); break;
         default: SelectDesignPattern(); break;
     }
 }
@@ -242,3 +246,23 @@ void DecoratorDesignPattern()
 
     Console.WriteLine("==============================================================================");
 }
+void ProxyDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("==============================================================================");
+    Console.WriteLine("\t\t\t\t ***        Proxy        ***");
+    Console.ResetColor();
+
+    Application app1 = new Application1(DateOnly.FromDateTime(DateTime.UtcNow));
+    Application2 app2 = new Application2();
+    string[] acl =  { "APP_1", "APP_3", "APP_4" };
+    RouterProxy router = new RouterProxy(RouterFactory.CreateRouter(), app1, acl);
+    if (router.Resolve("http://www.google.com"))
+    {
+        router.Stream();
+    }
+    Console.WriteLine("==============================================================================");
+
+}
+
