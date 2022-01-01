@@ -14,11 +14,14 @@ using DesignPattern.Creational.Singleton;
 using DesignPattern.Structural.Adapter.SMSAdapter.Adapters;
 using DesignPattern.Structural.Adapter.SMSAdapter.Messages;
 using DesignPattern.Structural.Bridge.Reports;
+using DesignPattern.Structural.Composite.DTOs.DataModelsDTO;
 using DesignPattern.Structural.Decorator;
 using DesignPattern.Structural.Decorator.Decorators;
 using DesignPattern.Structural.Facade.FileConverter;
 using DesignPattern.Structural.Proxy;
 using DesignPattern.Structural.Proxy.Clients;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 SelectDesignPattern();
 
@@ -34,7 +37,8 @@ void SelectDesignPattern()
         "~~~~~~~~~~      Bridge.",
         "~~~~~~~~~~      Facade.",
         "~~~~~~~~~~      Decorator.",
-        "~~~~~~~~~~      Proxy."
+        "~~~~~~~~~~      Proxy.",
+        "~~~~~~~~~~      Composite."
     };
     Console.WriteLine($"Select Correct Number:\n");
     Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  " + c.ToString()));
@@ -63,6 +67,7 @@ void DesignPatternSitwtch(int key)
         case 8: FacadeDesignPattern(); break;
         case 9: DecoratorDesignPattern(); break;
         case 10: ProxyDesignPattern(); break;
+        case 11: CompositeDesignPattern(); break;
         default: SelectDesignPattern(); break;
     }
 }
@@ -236,11 +241,11 @@ void DecoratorDesignPattern()
     INotifier notifier = new EmailNotifier("aa@a.a");
     if (SmsNotifictionEnable)
     {
-        notifier  = new SMSNotifierDecorator(notifier, "01000000");
+        notifier = new SMSNotifierDecorator(notifier, "01000000");
     }
     if (WhatsappNotifictionEnable)
     {
-        notifier  = new WhatsAppNotifierDecorator(notifier, "011111111");
+        notifier = new WhatsAppNotifierDecorator(notifier, "011111111");
     }
     notifier.Notify();
 
@@ -256,7 +261,7 @@ void ProxyDesignPattern()
 
     Application app1 = new Application1(DateOnly.FromDateTime(DateTime.UtcNow));
     Application2 app2 = new Application2();
-    string[] acl =  { "APP_1", "APP_3", "APP_4" };
+    string[] acl = { "APP_1", "APP_3", "APP_4" };
     RouterProxy router = new RouterProxy(RouterFactory.CreateRouter(), app1, acl);
     if (router.Resolve("http://www.google.com"))
     {
@@ -266,3 +271,32 @@ void ProxyDesignPattern()
 
 }
 
+
+
+void CompositeDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("==============================================================================");
+    Console.WriteLine("\t\t\t\t ***        Composite        ***");
+    Console.ResetColor();
+
+    AddressDTO address1 = new AddressDTO("St1", "13", "0020");
+    AddressDTO address2 = new AddressDTO("St2", "14", "0030");
+    AddressDTO address3 = new AddressDTO("St3", "15", "0040");
+
+    OrderOwnerDTO Ahmed_Order = new OrderOwnerDTO("Ahmed", address1);
+    OrderOwnerDTO ALi_Order = new OrderOwnerDTO("Ali", address3);
+    OrderOwnerDTO Mohammad_Order = new OrderOwnerDTO("Mohammad", address2);
+
+    OrderDTO order1 = new OrderDTO(Ahmed_Order, DateTime.UtcNow, 500, 8);
+    OrderDTO order2 = new OrderDTO(ALi_Order, DateTime.UtcNow, 1500, 10);
+    OrderDTO order3 = new OrderDTO(Mohammad_Order, DateTime.UtcNow.AddDays(10), 400, 4);
+
+    PurchaseBill bill = new PurchaseBill(new List<OrderDTO> { order1, order2, order3 });
+
+    var Result = JsonConvert.SerializeObject(bill, Formatting.Indented);
+    Console.WriteLine("PurchaseBill : " + Result);
+
+    Console.WriteLine("==============================================================================");
+}

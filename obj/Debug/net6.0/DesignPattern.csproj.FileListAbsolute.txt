@@ -6,6 +6,7 @@ E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\ref\DesignPattern.dll
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\DesignPattern.pdb
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\INIFileParser.dll
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\Work_2022\Learn\DesignPattern\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
