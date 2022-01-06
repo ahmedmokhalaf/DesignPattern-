@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Structural.Composite.DTOs.DataModelsDTO
+﻿namespace DesignPattern.Structural.Composite.DTOs.DataModelsDTO
 {
     internal class OrderOwnerDTO : IDTOModel
     {
@@ -19,7 +13,7 @@ namespace DesignPattern.Structural.Composite.DTOs.DataModelsDTO
 
         public string[] Render()
         {
-            return  new string[] {  Name , Address.Render().ToString() } ;
+            return new string[] { Name, Address.Render().ToString() };
         }
     }
 }

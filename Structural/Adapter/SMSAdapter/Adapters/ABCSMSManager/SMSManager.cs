@@ -1,9 +1,4 @@
 ﻿using DesignPattern.Structural.Adapter.SMSAdapter.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern.Structural.Adapter.SMSAdapter.Adapters.ABCSMSManager
 {
@@ -42,7 +37,7 @@ namespace DesignPattern.Structural.Adapter.SMSAdapter.Adapters.ABCSMSManager
 
         public string getDeliveryStatus()
         {
-            return new Random().Next(5,8).ToString() ;
+            return new Random().Next(5, 8).ToString();
         }
     }
 }

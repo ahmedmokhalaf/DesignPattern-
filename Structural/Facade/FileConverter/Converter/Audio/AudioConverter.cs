@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Structural.Facade.FileConverter.Converter.Audio
+﻿namespace DesignPattern.Structural.Facade.FileConverter.Converter.Audio
 {
     internal class AudioConverter : IConverter
     {

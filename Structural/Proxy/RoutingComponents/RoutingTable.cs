@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Structural.Proxy.RoutingComponents
+﻿namespace DesignPattern.Structural.Proxy.RoutingComponents
 {
     class RoutingTable
     {
@@ -16,7 +10,7 @@ namespace DesignPattern.Structural.Proxy.RoutingComponents
 
         public Route? MapUrlToIPAddress(string url)
         {
-            if(!string.IsNullOrEmpty(url))
+            if (!string.IsNullOrEmpty(url))
             {
                 Route? route = Routes.FirstOrDefault((x) => x.URL == url);
                 return route;

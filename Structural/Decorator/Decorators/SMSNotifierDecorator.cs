@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Structural.Decorator.Decorators
+﻿namespace DesignPattern.Structural.Decorator.Decorators
 {
     internal class SMSNotifierDecorator : NotifierDecorator
     {
@@ -14,7 +8,7 @@ namespace DesignPattern.Structural.Decorator.Decorators
             PhoneNumber = phoneNumber;
             SendSMS();
         }
-       
+
         private void SendSMS()
         {
             Console.WriteLine($"Sending SMS to {this.PhoneNumber}");

@@ -1,4 +1,7 @@
-﻿using DesignPattern.Bridge.Structural.Grades;
+﻿using DesignPattern.Behavioral.ChainOfResponsibility.Order;
+using DesignPattern.Behavioral.ChainOfResponsibility.Order.Exceptions;
+using DesignPattern.Behavioral.ChainOfResponsibility.Order.Handlers;
+using DesignPattern.Bridge.Structural.Grades;
 using DesignPattern.Bridge.Structural.Reports;
 using DesignPattern.Creational.AbstractFactory;
 using DesignPattern.Creational.AbstractFactory.FormAbstractFactory.DesktopForm;
@@ -18,10 +21,10 @@ using DesignPattern.Structural.Composite.DTOs.DataModelsDTO;
 using DesignPattern.Structural.Decorator;
 using DesignPattern.Structural.Decorator.Decorators;
 using DesignPattern.Structural.Facade.FileConverter;
+using DesignPattern.Structural.Flyweight.GameBoard;
 using DesignPattern.Structural.Proxy;
 using DesignPattern.Structural.Proxy.Clients;
 using Newtonsoft.Json;
-using System.Text.Json;
 
 SelectDesignPattern();
 
@@ -38,7 +41,9 @@ void SelectDesignPattern()
         "~~~~~~~~~~      Facade.",
         "~~~~~~~~~~      Decorator.",
         "~~~~~~~~~~      Proxy.",
-        "~~~~~~~~~~      Composite."
+        "~~~~~~~~~~      Composite.",
+        "~~~~~~~~~~      Flyweights.",
+        "Behavioral      Chain Of Responsibility."
     };
     Console.WriteLine($"Select Correct Number:\n");
     Patterns.ForEach((c) => Console.WriteLine((Patterns.IndexOf(c)) + 1 + " :  " + c.ToString()));
@@ -68,10 +73,11 @@ void DesignPatternSitwtch(int key)
         case 9: DecoratorDesignPattern(); break;
         case 10: ProxyDesignPattern(); break;
         case 11: CompositeDesignPattern(); break;
+        case 12: FlyweightDesignPattern(); break;
+        case 13: ChainOfResponsibilityDesignPattern(); break;
         default: SelectDesignPattern(); break;
     }
 }
-
 
 void FactoryDesignPattern()
 {
@@ -270,9 +276,6 @@ void ProxyDesignPattern()
     Console.WriteLine("==============================================================================");
 
 }
-
-
-
 void CompositeDesignPattern()
 {
     Console.ForegroundColor = ConsoleColor.Red;
@@ -298,5 +301,70 @@ void CompositeDesignPattern()
     var Result = JsonConvert.SerializeObject(bill, Formatting.Indented);
     Console.WriteLine("PurchaseBill : " + Result);
 
+    Console.WriteLine("==============================================================================");
+}
+
+void FlyweightDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***  Structural Pattern  ***");
+    Console.WriteLine("==============================================================================");
+    Console.WriteLine("\t\t\t\t ***        Flyweight        ***");
+    Console.ResetColor();
+
+    GameBoard gameBoard = new GameBoard();
+
+    GameTileBorder tileBorder1 = new GameTileBorder("Solid", "think", GameTileColor.TILE_COLOR_BLUE, "500x500", GameTileLevel.TILE_LEVEL_BEGINNER);
+    GameTileBorder tileBorder3 = new GameTileBorder("Solid", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_BEGINNER);
+    GameTileBorder tileBorder5 = new GameTileBorder("Dashed", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_EXPERT);
+    GameTileBorder tileBorder6 = new GameTileBorder("Solid", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_BEGINNER);
+    GameTileBorder tileBorder7 = new GameTileBorder("Dashed", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_BEGINNER);
+    GameTileBorder tileBorder8 = new GameTileBorder("Solid", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_BEGINNER);
+    GameTileBorder tileBorder9 = new GameTileBorder("None", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_EXPERT);
+    GameTileBorder tileBorder10 = new GameTileBorder("None", "think", GameTileColor.TILE_COLOR_BLUE, "100x100", GameTileLevel.TILE_LEVEL_EXPERT);
+    GameTileBorder tileBorder2 = new GameTileBorder("Dot", "think", GameTileColor.TILE_COLOR_BLUE, "200x200", GameTileLevel.TILE_LEVEL_INTERMEDIATE);
+    GameTileBorder tileBorder4 = new GameTileBorder("Dot", "think", GameTileColor.TILE_COLOR_BLUE, "200x200", GameTileLevel.TILE_LEVEL_INTERMEDIATE);
+
+    gameBoard.AddTile(tileBorder1);
+    gameBoard.AddTile(tileBorder2);
+    gameBoard.AddTile(tileBorder3);
+    gameBoard.AddTile(tileBorder4);
+    gameBoard.AddTile(tileBorder5);
+    gameBoard.AddTile(tileBorder6);
+    gameBoard.AddTile(tileBorder7);
+    gameBoard.AddTile(tileBorder8);
+    gameBoard.AddTile(tileBorder9);
+    gameBoard.AddTile(tileBorder10);
+
+    gameBoard.GetTiles().ForEach((x) => Console.WriteLine(JsonConvert.SerializeObject(x, Formatting.Indented)));
+    Console.WriteLine("==============================================================================");
+    Console.WriteLine($"Game Tile Create By Factory : {GameTileFactory.Tiles.Count()} \n" + JsonConvert.SerializeObject(GameTileFactory.Tiles, Formatting.Indented));
+
+    Console.WriteLine("==============================================================================");
+}
+
+void ChainOfResponsibilityDesignPattern()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("\t\t\t\t ***    Behavioral Pattern    ***");
+    Console.WriteLine("==============================================================================");
+    Console.WriteLine("\t\t\t\t *** Chain Of Responsibility ***");
+    Console.ResetColor();
+
+    User user = new User("USR-101", "Ahmed");
+    Product product = new Product("PRD-1", "Lenovo Laptop");
+    Order order = new Order(user, product, new DateOnly(2020, 07, 01));
+    LoyaltyHandler loyaltyHandler = new LoyaltyHandler();
+    loyaltyHandler
+        .SetNextHandler(new ProductAvailabilityHandler())
+        .SetNextHandler(new ShipmentHandler())
+        .SetNextHandler(new OrderHandler());
+   //Console.WriteLine(JsonConvert.SerializeObject(loyaltyHandler, Formatting.Indented));
+
+    try { loyaltyHandler.Handle(order); }
+    catch (NoLoyalUserException e){ Console.WriteLine(e.Message); }
+    catch (NoProductAvailableException e) { Console.WriteLine(e.Message); }
+    catch (NoShipmentAvailableException e) { Console.WriteLine(e.Message); }
+    catch (Exception e) { Console.WriteLine(e.Message); }
     Console.WriteLine("==============================================================================");
 }

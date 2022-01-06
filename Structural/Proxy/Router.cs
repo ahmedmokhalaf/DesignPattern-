@@ -1,9 +1,4 @@
 ﻿using DesignPattern.Structural.Proxy.RoutingComponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern.Structural.Proxy
 {
@@ -40,23 +35,26 @@ namespace DesignPattern.Structural.Proxy
 
         public void Stream()
         {
-            string[] packets  = {
+            string[] packets = {
                 "Package one is clean",
                 "Package two is clean",
                 "Package three is __BAD__",
                 "Package four is __BAD__",
             };
 
-            foreach (string packet in packets) {
-                if (firewall.isValidPacket(packet)) {
+            foreach (string packet in packets)
+            {
+                if (firewall.isValidPacket(packet))
+                {
                     Console.WriteLine($"{packet}");
-                } else
+                }
+                else
                 {
                     Console.WriteLine("Dropping a packet");
                 }
             }
 
-        terminate();
+            terminate();
         }
 
         private void terminate()

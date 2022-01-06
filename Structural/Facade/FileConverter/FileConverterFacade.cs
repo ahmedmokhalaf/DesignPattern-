@@ -9,11 +9,6 @@ using DesignPattern.Structural.Facade.FileConverter.FileScanner.Video;
 using DesignPattern.Structural.Facade.FileConverter.Normalizer;
 using DesignPattern.Structural.Facade.FileConverter.Normalizer.Audio;
 using DesignPattern.Structural.Facade.FileConverter.Normalizer.Video;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern.Structural.Facade.FileConverter
 {

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Text;
-using IniParser;
+﻿using IniParser;
 using IniParser.Model;
-using IniParser.Parser;
+using System.Text;
 
 namespace DesignPattern.Creational.Singleton
 {
-     class AppSettings
+    class AppSettings
     {
         private static IniData Config;
         private static AppSettings Instance = null;

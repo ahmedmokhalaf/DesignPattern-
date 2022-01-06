@@ -1,9 +1,4 @@
 ﻿using DesignPattern.Bridge.Structural.Reports;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern.Bridge.Structural.Grades
 {
@@ -15,7 +10,7 @@ namespace DesignPattern.Bridge.Structural.Grades
             Report = report;
         }
         abstract public string ShowReport();
-        public void SetReport (ReportBridge report)
+        public void SetReport(ReportBridge report)
         {
             Report = report;
         }
